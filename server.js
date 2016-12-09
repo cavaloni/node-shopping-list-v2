@@ -66,6 +66,12 @@ app.post('/recipes', jsonParser, (req, res) => {
   res.status(201).json(Recipes.create(req.body.name, req.body.ingredients));
 });
 
+app.delete('/recipes/:id', jsonParser, (req, res) => {
+  Recipes.delete(req.params.id);
+  res.status(201);
+  res.send('worked');
+});
+
 app.listen(process.env.PORT || 8080, () => {
   console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
 });
